@@ -14,13 +14,14 @@ import './index.css';
 )*/
 
 const Video = (props:{
-    title:string,  duration:string, uploadDate:string, description:string})  => {   /*nombre del componente Video*/
-    
+    title:string,  duration:number, uploadDate:string, description:string})  => {   /*nombre del componente Video*/
+    const seconds = props.duration % 60;
+    const minutes = Math.floor (props.duration/60); /*Math.floor metodo de JavaScript que redondea hacia abajo al entero mas cercano*/
     return <div>
         <h3>{props.title}</h3>
         <div>
-            <span>{props.duration}</span>
-            <span>{props.uploadDate}</span>
+            <span>{minutes}: {seconds}</span>
+            <span>{props.uploadDate.toLocaleDateString}</span>
         </div>
         <div>
             <p>{props.description}</p>
@@ -36,9 +37,15 @@ const Video = (props:{
         <div>
             <h1>Desarrollo Útil</h1>
             <Video title='Componentes' 
-            duration='25:04' 
-            uploadDate='25/02/2022' 
+            duration={2760} 
+            uploadDate= {new Date (2022, 2, 25)} 
             description='componentes en react'>
+            </Video>
+
+            <Video title='useState' 
+            duration={3145} 
+            uploadDate= {new Date (2022, 3, 3)}
+            description='como utilizar estados en react'>
             </Video>
         </div>
     )
